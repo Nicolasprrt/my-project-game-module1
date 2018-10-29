@@ -1,0 +1,54 @@
+body {
+
+background-image: url("../images/home-background.png");
+background-size: cover;
+}
+/* .BackGroundIndex{
+background-image: url("../images/BackGroundIndex.png");
+background-size: cover;
+} */
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 650px; 
+   
+}
+
+.bouton-lets-play a {
+    display:block;
+    width: 200px;
+    height:100px ;
+    text-align:center;
+    vertical-align:middle;
+    background:url("../images/button-lets-play.png") no-repeat;
+    text-decoration:none;
+    background-size: contain;
+    }
+    .bouton-lets-play a:hover {
+        background:url("../images/button-lets-play-hover.png") no-repeat;
+        background-size: contain;
+    }
+
+
+
+
+
+
+/* .screen-container{
+        display: flex;
+        justify-content: center;
+        margin-top: 110px; 
+       
+    }
+    .screen{
+        display:block;
+        width: 700px;
+        height: 500px ;
+        text-align:center;
+        vertical-align:middle;
+        background:url("../images/screen.png") no-repeat;
+        background-size: contain;
+
+      }
+ */
