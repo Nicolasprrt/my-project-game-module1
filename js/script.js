@@ -1,4 +1,8 @@
 // I CREAT MY OBJECTS ???? BIRDS AND MY SIGHT(VISEUR)
+var canvas = document.querySelector("#my-canvas");
+var ctx = canvas.getContext("2d");
+
+
 
 class Quail {
   constructor(quailX, quailY, quailWidth, quailHeight) {
@@ -8,8 +12,41 @@ class Quail {
     this.height = quailHeight;
     this.shoots = false;
   }
+
+  drawMe(){
+   
+    ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
+  }
+  
 };
 
+var quail1Img = new Image();   // Crée un nouvel élément Image
+quail1Img.src = "./images/quail1.png";
+
+var quail = {
+  x: 200,
+  y: 225,
+  width: 100,
+  height: 100,
+  shoots: false,
+  drawMe: function () {
+    ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
+  },
+};
+
+function drawingLoop() {
+  // delete everything drawn before
+  ctx.clearRect(0, 0, 1200, 550);
+
+  // draw everything again
+  drawEverything();
+
+  requestAnimationFrame(function () {
+    drawingLoop();
+  });
+}
+
+drawingLoop()
 
 /*
 class Sight{
@@ -22,7 +59,9 @@ class Sight{
 };
 */
 
-
+function drawEverything() {
+  quail.drawMe()
+}
 
 // F***ING BIRDS IMAGES
 var quail1Img = new Image();   // Crée un nouvel élément Image
@@ -102,7 +141,7 @@ var allQuails = [
 
 //FUNCTION FOR : Hit Detection Mouse Touch Over Object Arrays
 function initCanvas(){
-  var ctx = document.getElementById('my_canvas').getContext('2d');
+  var ctx = document.getElementById('my-canvas').getContext('2d');
   ctx.canvas.addEventListener('mousedown', function(event) {
       var mX = event.clientX - ctx.canvas.offsetLeft;
       var mY = event.clientY - ctx.canvas.offsetTop;
@@ -139,7 +178,6 @@ function initCanvas(){
 window.addEventListener('load', function(event) {
   initCanvas();
 });
-
 
 
 
