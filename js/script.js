@@ -1,4 +1,4 @@
-// I CREAT MY OBJECTS ???? QUAILS AND MY SIGHT(VISEUR)
+// I CREAT MY OBJECTS ???? BIRDS AND MY SIGHT(VISEUR)
 
 class Quail {
   constructor(quailX, quailY, quailWidth, quailHeight) {
@@ -10,6 +10,8 @@ class Quail {
   }
 };
 
+
+/*
 class Sight{
   constructor(sightX, sightY, sightWidth, sightHeight) {
     this.x = sightX;
@@ -18,6 +20,9 @@ class Sight{
     this.height = sightHeight;
   }
 };
+*/
+
+
 
 // F***ING BIRDS IMAGES
 var quail1Img = new Image();   // Crée un nouvel élément Image
@@ -41,16 +46,41 @@ quail9Img.src = "./images/quail9.png"; // Définit le chemin vers sa source
 var quail10Img = new Image();   // Crée un nouvel élément Image
 quail10Img.src = "./images/quail10.png"; // Définit le chemin vers sa source
 
-// Function for Drawing the birds
-drawMe: function (){
+// Functions for drawing my quails
+function drawQuail1 (){
   ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
   };
+function drawQuail2 (){
+  ctx.drawImage(quail2Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail3 (){
+  ctx.drawImage(quail3Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail4 (){
+  ctx.drawImage(quail4Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail5 (){
+  ctx.drawImage(quail5Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail6 (){
+  ctx.drawImage(quail6Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail7 (){
+  ctx.drawImage(quail7Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail8 (){
+  ctx.drawImage(quail8Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail9 (){
+   ctx.drawImage(quail9Img, this.x, this.y, this.width, this.height);
+  };
+function drawQuail10 (){
+    ctx.drawImage(quail10Img, this.x, this.y, this.width, this.height);
+  };
+          
 
 
-
-
-
-
+// I have no idea of what I'm doing but I do It... I suppose I have to make an Array of all my birds
 var allQuails = [
   new Quail(650, 0, 30, 250),
   new Quail(800, 350, 30, 200),
@@ -83,7 +113,10 @@ function initCanvas(){
           }
       }
   });
-  var arrayOfQuails = [    {"id":"quail1","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
+
+
+  // Setting my Array of Birds (don't know how to put my image instead of squares... )
+  var arrayOfQuails = [ {"id":"quail1","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
                     {"id":"quail2","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
                     {"id":"quail3","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
                     {"id":"quail4","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
@@ -100,6 +133,9 @@ function initCanvas(){
       ctx.fillRect(b.x,b.y,b.w,b.h);
   }
 }
+
+
+// This must be for loading Image .... or not ? 
 window.addEventListener('load', function(event) {
   initCanvas();
 });
