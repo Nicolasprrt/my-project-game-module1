@@ -1,14 +1,20 @@
 body {
+    background-image: url("../images/BackGroundIndex.png");
+    }
 
-background-image: url("../images/BackGroundIndex2.png");
-background-size: cover;
-}
 
-canvas{
-    background-image: url("../images/screen.png");
-    margin-left: 200px;
-    margin-top: 100px;
-}
 
+#canvas {
+    margin-left: 300px;
+    margin-top: 180px;
+    width: 600px;
+    height: 400px;
+    border: 1px solid black;
+  }
+
+  #myImg {
+    margin-top: 500px;
+  }
+  
 
 

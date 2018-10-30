@@ -1,186 +1,317 @@
-// I CREAT MY OBJECTS ???? BIRDS AND MY SIGHT(VISEUR)
-var canvas = document.querySelector("#my-canvas");
-var ctx = canvas.getContext("2d");
+
+// Canvas Tennis
+
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
 
 
+var background = new Image();
+background.src = "./images/tennis-court.png"
 
-class Quail {
-  constructor(quailX, quailY, quailWidth, quailHeight) {
-    this.x = quailX;
-    this.y = quailY;
-    this.width = quailWidth;
-    this.height = quailHeight;
-    this.shoots = false;
-  }
+// Make sure the image is loaded first otherwise nothing will draw.
 
-  drawMe(){
-   
-    ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
-  }
-  
+
+// Key Codes
+var W = 87;
+var S = 83;
+var UP = 38;
+var DOWN = 40;
+
+// Keep track of pressed keys
+var keys = {
+W: false,
+S: false,
+UP: false,
+DOWN: false
 };
 
-var quail1Img = new Image();   // Crée un nouvel élément Image
-quail1Img.src = "./images/quail1.png";
 
-var quail = {
-  x: 200,
-  y: 225,
-  width: 100,
-  height: 100,
-  shoots: false,
-  drawMe: function () {
-    ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
-  },
-};
 
-function drawingLoop() {
-  // delete everything drawn before
-  ctx.clearRect(0, 0, 1200, 550);
+var quailLeftImg = new Image();
+quailLeftImg.src = "./images/quail1.png";
 
-  // draw everything again
-  drawEverything();
 
-  requestAnimationFrame(function () {
-    drawingLoop();
-  });
-}
+var quailRightImg = new Image();
+quailRightImg.src = "./images/quail2.png";
 
-drawingLoop()
+var ballImg = new Image();
+ballImg.src = "./images/ball.png";
 
-/*
-class Sight{
-  constructor(sightX, sightY, sightWidth, sightHeight) {
-    this.x = sightX;
-    this.y = sightY;
-    this.width = sightWidth;
-    this.height = sightHeight;
+function drawQuail(x, y, width, height, speed, quailImg){
+return {
+  x: x,
+  y: y,
+  w: width,
+  h: height,
+  s: speed,
+  i: quailImg,
+  draw: function() {
+    if (!quailImg) {
+      context.fillStyle = '#000000';
+      context.fillRect(this.x, this.y, this.w, this.h);
+    }
+    else {
+      context.drawImage(this.i, this.x, this.y, this.w, this.h);
+    }
   }
 };
-*/
-
-function drawEverything() {
-  quail.drawMe()
-}
-
-// F***ING BIRDS IMAGES
-var quail1Img = new Image();   // Crée un nouvel élément Image
-quail1Img.src = "./images/quail1.png"; // Définit le chemin vers sa source
-var quail2Img = new Image();   // Crée un nouvel élément Image
-quail2Img.src = "./images/quail2.png"; // Définit le chemin vers sa source
-var quail3Img = new Image();   // Crée un nouvel élément Image
-quail3Img.src = "./images/quail3.png"; // Définit le chemin vers sa source
-var quail4Img = new Image();   // Crée un nouvel élément Image
-quail4Img.src = "./images/quail4.png"; // Définit le chemin vers sa source
-var quail5Img = new Image();   // Crée un nouvel élément Image
-quail5Img.src = "./images/quail5.png"; // Définit le chemin vers sa source
-var quail6Img = new Image();   // Crée un nouvel élément Image
-quail6Img.src = "./images/quail6.png"; // Définit le chemin vers sa source
-var quail7Img = new Image();   // Crée un nouvel élément Image
-quail7Img.src = "./images/quail7.png"; // Définit le chemin vers sa source
-var quail8Img = new Image();   // Crée un nouvel élément Image
-quail8Img.src = "./images/quail8.png"; // Définit le chemin vers sa source
-var quail9Img = new Image();   // Crée un nouvel élément Image
-quail9Img.src = "./images/quail9.png"; // Définit le chemin vers sa source
-var quail10Img = new Image();   // Crée un nouvel élément Image
-quail10Img.src = "./images/quail10.png"; // Définit le chemin vers sa source
-
-// Functions for drawing my quails
-function drawQuail1 (){
-  ctx.drawImage(quail1Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail2 (){
-  ctx.drawImage(quail2Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail3 (){
-  ctx.drawImage(quail3Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail4 (){
-  ctx.drawImage(quail4Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail5 (){
-  ctx.drawImage(quail5Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail6 (){
-  ctx.drawImage(quail6Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail7 (){
-  ctx.drawImage(quail7Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail8 (){
-  ctx.drawImage(quail8Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail9 (){
-   ctx.drawImage(quail9Img, this.x, this.y, this.width, this.height);
-  };
-function drawQuail10 (){
-    ctx.drawImage(quail10Img, this.x, this.y, this.width, this.height);
-  };
-          
-
-
-// I have no idea of what I'm doing but I do It... I suppose I have to make an Array of all my birds
-var allQuails = [
-  new Quail(650, 0, 30, 250),
-  new Quail(800, 350, 30, 200),
-  new Quail(970, 0, 30, 250),
-  new Quail(1120, 300, 30, 250),
-  new Quail(1270, 0, 45, 200),
-  new Quail(1420, 300, 30, 250),
-  new Quail(970, 0, 30, 250),
-  new Quail(1120, 300, 30, 250),
-  new Quail(1270, 0, 45, 200),
-  new Quail(1420, 300, 30, 250),
-];
-
-
-//var canvas = document.querySelector(".my_canvas");
-//var ctx = canvas.getContext("2d");
-
-
-
-//FUNCTION FOR : Hit Detection Mouse Touch Over Object Arrays
-function initCanvas(){
-  var ctx = document.getElementById('my-canvas').getContext('2d');
-  ctx.canvas.addEventListener('mousedown', function(event) {
-      var mX = event.clientX - ctx.canvas.offsetLeft;
-      var mY = event.clientY - ctx.canvas.offsetTop;
-      for(var i = 0; i < arrayOfQuails.length; i++){
-          var b = arrayOfQuails[i];
-          if(mX >= b.x && mX < b.x+b.w && mY >= b.y && mY < b.y+b.h){
-              document.getElementById('status').innerHTML = "You touched "+b.id;
-          }
-      }
-  });
-
-
-  // Setting my Array of Birds (don't know how to put my image instead of squares... )
-  var arrayOfQuails = [ {"id":"quail1","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail2","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail3","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail4","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail5","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail6","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail7","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail8","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail9","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-                    {"id":"quail10","x":100,"y":100,"w":50,"h":50,"bg":"magenta"},
-  ];
-  for(var i = 0; i < arrayOfQuails.length; i++){
-      var b = arrayOfQuails[i];
-      ctx.fillStyle = b.bg;
-      ctx.fillRect(b.x,b.y,b.w,b.h);
-  }
 }
 
 
-// This must be for loading Image .... or not ? 
-window.addEventListener('load', function(event) {
-  initCanvas();
+function drawBall(x, y, width, height, speed, ballImg){
+return {
+  x: x,
+  y: y,
+  w: width,
+  h: height,
+  s: speed,
+  i: ballImg,
+  draw: function() {
+    if (!ballImg) {
+      context.fillStyle = '#000000';
+      context.fillRect(this.x, this.y, this.w, this.h);
+    }
+    else {
+      context.drawImage(this.i, this.x, this.y, this.w, this.h);
+    }
+  }
+};
+}
+
+// Create a rectangle object - for paddles, ball, etc
+function makeRect(x, y, width, height, speed, color) {
+if (!color) color = '#000000';
+return {
+  x: x,
+  y: y,
+  w: width,
+  h: height,
+  s: speed,
+  c: color,
+  draw: function() {
+    context.fillStyle = this.c;
+    context.fillRect(this.x, this.y, this.w, this.h);
+  }
+};
+}
+
+
+
+
+
+
+// Create the paddles
+var paddleWidth = 120;
+var paddleHeight = 100;
+var leftPaddle = drawQuail(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, quailLeftImg);
+var rightPaddle = drawQuail(canvas.width - paddleWidth - 25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, quailRightImg);
+
+// Keep track of the score
+var leftScore = 0;
+var rightScore = 0;
+
+// Create the ball
+var ballLength = 15;
+var ballSpeed = 2;
+var ball = drawBall(0, 0, ballLength, ballLength, ballSpeed, ballImg);
+
+// Modify the ball object to have two speed properties, one for X and one for Y
+ball.sX = ballSpeed;
+ball.sY = ballSpeed / 2;
+
+// Randomize initial direction
+if (Math.random() > 0.5) {
+ball.sX *= -1;
+}
+// Randomize initial direction
+if (Math.random() > 0.5) {
+ball.sY *= -1;
+}
+
+// Reset the ball's position and speed after scoring
+function resetBall() {
+ball.x = canvas.width / 2 - ball.w / 2;
+ball.y = canvas.height / 2 - ball.w / 2;
+ball.sX = ballSpeed;
+ball.sY = ballSpeed / 2;
+}
+
+// Bounce the ball off of a paddle
+function bounceBall() {
+// Increase and reverse the X speed
+if (ball.sX > 0) {
+  ball.sX += 1;
+  // Add some "spin"
+  if (keys.UP) {
+    ball.sY -= 1;
+  } else if (keys.DOWN) {
+    ball.sY += 1;
+  }
+} else {
+  ball.sX -= 1;
+  // Add some "spin"
+  if (keys.W) {
+    ball.sY -= 1;
+  } else if (keys.S) {
+    ball.sY += 1
+  }
+}
+ball.sX *= -1;
+}
+
+// Listen for keydown events
+canvas.addEventListener('keydown', function(e) {
+if (e.keyCode === W) {
+  keys.W = true;
+}
+if (e.keyCode === S) {
+  keys.S = true;
+}
+if (e.keyCode === UP) {
+  keys.UP = true;
+}
+if (e.keyCode === DOWN) {
+  keys.DOWN = true;
+}
 });
 
+// Listen for keyup events
+canvas.addEventListener('keyup', function(e) {
+if (e.keyCode === W) {
+  keys.W = false;
+}
+if (e.keyCode === S) {
+  keys.S = false;
+}
+if (e.keyCode === UP) {
+  keys.UP = false;
+}
+if (e.keyCode === DOWN) {
+  keys.DOWN = false;
+}
+});
 
+// Show the menu
+function menu() {
+erase();
+// Show the menu
+context.fillStyle = '#fff';
+context.font = '24px Sniglet';
+context.textAlign = 'center';
+context.fillText('PONG', canvas.width / 2, canvas.height / 4);
+context.font = '18px Sniglet';
+context.fillText('Click to Start', canvas.width / 2, canvas.height / 3);
+context.font = '14px Sniglet';
+context.textAlign = 'left';
+context.fillText('Player 1: W (up) and S (down)', 5, (canvas.height / 3) * 2);
+context.textAlign = 'right';
+context.fillText('Player 2: UP (up) and DOWN (down)', canvas.width - 5, (canvas.height / 3) * 2);
+// Start the game on a click
+canvas.addEventListener('click', startGame);
+}
 
+// Start the game
+function startGame() {
+// Don't accept any more clicks
+canvas.removeEventListener('click', startGame);
+// Put the ball in place
+resetBall();
+// Kick off the game loop
+draw();
+}
 
+// Show the end game screen
+function endGame() {
+erase();
+//context.fillStyle = '#000000';
+context.font = '24px Sniglet';
+context.textAlign = 'center';
+var winner = 1;
+if (rightScore === 10) winner = 2;
+context.fillText('Player ' + winner + ' wins!', canvas.width/2, canvas.height/2);
+}
 
+// Clear the canvas
+function erase() {
+//context.fillStyle = '#FFFFFF';
+context.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+// Main draw loop
+function draw() {
+erase();
+// Move the paddles
+if (keys.W) {
+  leftPaddle.y -= leftPaddle.s;
+}
+if (keys.S) {
+  leftPaddle.y += leftPaddle.s;
+}
+if (keys.UP) {
+  rightPaddle.y -= rightPaddle.s;
+}
+if (keys.DOWN) {
+  rightPaddle.y += rightPaddle.s;
+}
+// Move the ball
+ball.x += ball.sX;
+ball.y += ball.sY;
+// Bounce the ball off the top/bottom
+if (ball.y < 0 || ball.y + ball.h > canvas.height) {
+  ball.sY *= -1;
+}
+// Don't let the paddles go off screen
+[leftPaddle, rightPaddle].forEach(function(paddle) {
+  if (paddle.y < 0) {
+    paddle.y = 0;
+  } 
+  if (paddle.y + paddle.h > canvas.height) {
+    paddle.y = canvas.height - paddle.h;
+  }
+});
+// Bounce the ball off the paddles
+if (ball.y + ball.h/2 >= leftPaddle.y && ball.y + ball.h/2 <= leftPaddle.y + leftPaddle.h) {
+  if (ball.x <= leftPaddle.x + leftPaddle.w) {
+    bounceBall();
+  }
+} 
+if (ball.y + ball.h/2 >= rightPaddle.y && ball.y + ball.h/2 <= rightPaddle.y + rightPaddle.h) {
+  if (ball.x + ball.w >= rightPaddle.x) {
+    bounceBall();
+  }
+}
+// Score if the ball goes past a paddle
+if (ball.x < leftPaddle.x) {
+  rightScore++;
+  resetBall();
+  ball.sX *= -1;
+} else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
+  leftScore++;
+  resetBall();
+  ball.sX *= -1;
+}
+// Draw the paddles and ball
+context.drawImage(background, 0, 0);
+leftPaddle.draw();
+rightPaddle.draw();
+ball.draw();
+// Draw the scores
+context.fillStyle = '#ffffff';
+context.font = '24px Sniglet';
+
+context.textAlign = 'left';
+context.fillText('Score: ' + leftScore, 5, 24);
+context.textAlign = 'right';
+context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
+// End the game or keep going
+if (leftScore === 10 || rightScore === 10) {
+  endGame();
+} else {
+  window.requestAnimationFrame(draw);
+}
+}
+
+// Show the menu to start the game
+menu();
+canvas.focus();
 
