@@ -13,6 +13,9 @@ var backgroundPlayer2Win = new Image();
 backgroundPlayer2Win.src = "./images/player2WinBackground.png"
 
 
+
+var menuMusic = new Audio();
+menuMusic.src ="./musics/Tennis Court.mp3"
 var ballBouncingSound = new Audio();
 ballBouncingSound.src ="./musics/ballbouncing.mp3"
 var applauseSound = new Audio();
@@ -188,7 +191,9 @@ if (e.keyCode === DOWN) {
 // Show the menu
 function menu() {
 erase();
+
 context.drawImage(background, 0, 0);
+menuMusic.play();
 // Show the menu
 context.fillStyle = '#fff';
 context.font = '24px Sniglet';
@@ -201,6 +206,7 @@ context.textAlign = 'left';
 context.fillText('Player 1: W (up) and S (down)', 5, (canvas.height / 3) * 2);
 context.textAlign = 'right';
 context.fillText('Player 2: UP (up) and DOWN (down)', canvas.width - 5, (canvas.height / 3) * 2);
+
 // Start the game on a click
 canvas.addEventListener('click', startGame);
 }
