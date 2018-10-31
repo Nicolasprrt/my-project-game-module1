@@ -7,11 +7,18 @@ var context = canvas.getContext('2d');
 
 var background = new Image();
 background.src = "./images/tennis-court.png"
+var backgroundPlayer1Win = new Image();
+backgroundPlayer1Win.src = "./images/player1WinBackground.png"
+var backgroundPlayer2Win = new Image();
+backgroundPlayer2Win.src = "./images/player2WinBackground.png"
+
 
 var ballBouncingSound = new Audio();
 ballBouncingSound.src ="./musics/ballbouncing.mp3"
 var applauseSound = new Audio();
 applauseSound.src ="./musics/applause.mp3"
+var endingsong = new Audio();
+endingsong.src ="./musics/Endingsong.mp3"
 
 
 
@@ -214,13 +221,18 @@ draw();
 // Show the end game screen
 function endGame() {
 erase();
-context.fillStyle = '#000000';
+context.drawImage(backgroundPlayer1Win, 0, 0);
+context.fillStyle = '#fff';
 context.font = '24px Sniglet';
 context.textAlign = 'center';
 var winner = 1;
-if (rightScore === 10) winner = 2;
+if (rightScore === 5) {
+  winner = 2;
+  context.drawImage(backgroundPlayer2Win, 0, 0)
+}
 context.fillText('Player ' + winner + ' wins!', canvas.width/2, canvas.height/2);
 applauseSound.play();
+endingsong.play();
 }
 
 // Clear the canvas
@@ -296,7 +308,7 @@ context.fillText('Score: ' + leftScore, 5, 24);
 context.textAlign = 'right';
 context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
 // End the game or keep going
-if (leftScore === 10 || rightScore === 10) {
+if (leftScore === 5 || rightScore === 5) {
   endGame();
 } else {
   window.requestAnimationFrame(draw);
