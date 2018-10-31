@@ -213,6 +213,7 @@ canvas.addEventListener('click', startGame);
 
 // Start the game
 function startGame() {
+menuMusic.pause()
 // Don't accept any more clicks
 canvas.removeEventListener('click', startGame);
 // Put the ball in place
