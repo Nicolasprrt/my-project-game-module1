@@ -1,0 +1,40 @@
+body {
+    background-image: url("../images/BackgroundGame.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    }
+
+
+
+#canvas {
+    margin-left: 330px;
+    margin-top: 140px;
+    width: 600px;
+    height: 400px;
+    border: 1px solid black;
+  }
+
+
+
+  .container{
+    display: flex;
+    justify-content: center;
+    margin-top: 2px; 
+   
+}
+
+.restart-button a {
+    display:block;
+    width: 200px;
+    height:100px ;
+    text-align:center;
+    vertical-align:middle;
+    background:url("../images/restartButton.png") no-repeat;
+    text-decoration:none;
+    background-size: contain;
+    }
+    .restart-button a:hover {
+        background:url("../images/restarButton-hover.png") no-repeat;
+        background-size: contain;
+    }
+

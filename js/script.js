@@ -90,14 +90,10 @@ return {
 };
 }
 
-// Create a rectangle object - for paddles, ball, etc
 
 
 
-
-
-
-// Create the paddles
+// Create the Quails
 var paddleWidth = 120;
 var paddleHeight = 100;
 var leftPaddle = drawQuail(25, canvas.height / 2 - paddleHeight / 2, paddleWidth, paddleHeight, 5, quailLeftImg);
@@ -192,6 +188,7 @@ if (e.keyCode === DOWN) {
 // Show the menu
 function menu() {
 erase();
+context.drawImage(background, 0, 0);
 // Show the menu
 context.fillStyle = '#fff';
 context.font = '24px Sniglet';
