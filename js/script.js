@@ -8,6 +8,13 @@ var context = canvas.getContext('2d');
 var background = new Image();
 background.src = "./images/tennis-court.png"
 
+var ballBouncingSound = new Audio();
+ballBouncingSound.src ="./musics/ballbouncing.mp3"
+var applauseSound = new Audio();
+applauseSound.src ="./musics/applause.mp3"
+
+
+
 // Make sure the image is loaded first otherwise nothing will draw.
 
 
@@ -26,10 +33,8 @@ DOWN: false
 };
 
 
-
 var quailLeftImg = new Image();
 quailLeftImg.src = "./images/quail1.png";
-
 
 var quailRightImg = new Image();
 quailRightImg.src = "./images/quail2.png";
@@ -79,21 +84,6 @@ return {
 }
 
 // Create a rectangle object - for paddles, ball, etc
-function makeRect(x, y, width, height, speed, color) {
-if (!color) color = '#000000';
-return {
-  x: x,
-  y: y,
-  w: width,
-  h: height,
-  s: speed,
-  c: color,
-  draw: function() {
-    context.fillStyle = this.c;
-    context.fillRect(this.x, this.y, this.w, this.h);
-  }
-};
-}
 
 
 
@@ -138,6 +128,7 @@ ball.sY = ballSpeed / 2;
 
 // Bounce the ball off of a paddle
 function bounceBall() {
+  ballBouncingSound.play();
 // Increase and reverse the X speed
 if (ball.sX > 0) {
   ball.sX += 1;
@@ -198,7 +189,7 @@ erase();
 context.fillStyle = '#fff';
 context.font = '24px Sniglet';
 context.textAlign = 'center';
-context.fillText('PONG', canvas.width / 2, canvas.height / 4);
+context.fillText('SUPER QUAIL TENNIS', canvas.width / 2, canvas.height / 4);
 context.font = '18px Sniglet';
 context.fillText('Click to Start', canvas.width / 2, canvas.height / 3);
 context.font = '14px Sniglet';
@@ -223,12 +214,13 @@ draw();
 // Show the end game screen
 function endGame() {
 erase();
-//context.fillStyle = '#000000';
+context.fillStyle = '#000000';
 context.font = '24px Sniglet';
 context.textAlign = 'center';
 var winner = 1;
 if (rightScore === 10) winner = 2;
 context.fillText('Player ' + winner + ' wins!', canvas.width/2, canvas.height/2);
+applauseSound.play();
 }
 
 // Clear the canvas
