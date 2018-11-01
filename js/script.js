@@ -6,9 +6,9 @@ var context = canvas.getContext('2d');
 
 
 var background = new Image();
-background.src = "./images/tennis-court.png"
+background.src = "./images/tennis-court2.png"
 var backgroundPlayer1Win = new Image();
-backgroundPlayer1Win.src = "./images/player1WinBackground.png"
+backgroundPlayer1Win.src = "./images/player1WinBackground2.png"
 var backgroundPlayer2Win = new Image();
 backgroundPlayer2Win.src = "./images/player2WinBackground.png"
 
