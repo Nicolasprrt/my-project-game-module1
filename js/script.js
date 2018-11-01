@@ -14,6 +14,8 @@ backgroundPlayer2Win.src = "./images/player2WinBackground.png"
 
 
 
+
+
 var menuMusic = new Audio();
 menuMusic.src ="./musics/ole.mp3"
 var ballBouncingSound = new Audio();
@@ -22,6 +24,9 @@ var applauseSound = new Audio();
 applauseSound.src ="./musics/applause.mp3"
 var endingsong = new Audio();
 endingsong.src ="./musics/Endingsong.mp3"
+var applausePoints = new Audio();
+applausePoints.src ="./musics/applausePoint.mp3"
+
 
 
 
@@ -293,10 +298,12 @@ if (ball.x < leftPaddle.x) {
   rightScore++;
   resetBall();
   ball.sX *= -1;
+  applausePoints.play()
 } else if (ball.x + ball.w > rightPaddle.x + rightPaddle.w) {
   leftScore++;
   resetBall();
   ball.sX *= -1;
+  applausePoints.play()
 }
 // Draw the paddles and ball
 context.drawImage(background, 0, 0);
