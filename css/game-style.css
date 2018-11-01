@@ -30,7 +30,6 @@ body {
     width: 200px;
     height:100px ;
     text-align:center;
-    vertical-align:middle;
     background:url("../images/restartButton.png") no-repeat;
     text-decoration:none;
     background-size: contain;
