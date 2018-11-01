@@ -1,4 +1,6 @@
 body {
+    display: flex;
+    align-items: center;
     background-image: url("../images/BackgroundGame.png");
     background-size: cover;
     background-repeat: no-repeat;
@@ -12,7 +14,6 @@ body {
 .container-canvas {
     display: flex;
     justify-content: center;
-    margin-top: 150px; 
 }
 
 
