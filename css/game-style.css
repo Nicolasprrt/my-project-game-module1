@@ -3,16 +3,21 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Sniglet' "sans-serif" ;
-
-
     }
 
 
 @import url(https://fonts.googleapis.com/css?family=Sniglet:800);
 
+
+.container-canvas {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px; 
+}
+
+
+
 #canvas {
-    margin-left: 310px;
-    margin-top: 210px;
     width: 600px;
     height: 400px;
     border: 1px solid black;
