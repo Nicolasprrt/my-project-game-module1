@@ -226,15 +226,15 @@ draw();
 function endGame() {
 erase();
 context.drawImage(backgroundPlayer1Win, 0, 0);
-context.fillStyle = '#fff';
-context.font = '24px Sniglet';
+context.fillStyle = '#FEF71E';
+context.font = '48px Sniglet';
 context.textAlign = 'center';
 var winner = 1;
 if (rightScore === 5) {
   winner = 2;
   context.drawImage(backgroundPlayer2Win, 0, 0)
 }
-context.fillText('Player ' + winner + ' wins!', canvas.width/2, canvas.height/2);
+context.fillText('PLAYER ' + winner + ' WINS!', canvas.width/2, canvas.height/2);
 applauseSound.play();
 endingsong.play();
 }
