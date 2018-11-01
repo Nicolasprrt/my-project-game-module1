@@ -15,7 +15,7 @@ backgroundPlayer2Win.src = "./images/player2WinBackground.png"
 
 
 var menuMusic = new Audio();
-menuMusic.src ="./musics/Tennis Court.mp3"
+menuMusic.src ="./musics/ole.mp3"
 var ballBouncingSound = new Audio();
 ballBouncingSound.src ="./musics/ballbouncing.mp3"
 var applauseSound = new Audio();

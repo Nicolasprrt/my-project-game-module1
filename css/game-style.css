@@ -38,3 +38,8 @@ body {
         background-size: contain;
     }
 
+  
+    @font-face {
+        font-family: "Sniglet";
+        src: url('../fonts/Sniglet-ExtraBold.otf');
+    }
