@@ -163,6 +163,7 @@ ball.sX *= -1;
 
 // Listen for keydown events
 canvas.addEventListener('keydown', function(e) {
+  e.preventDefault()
 if (e.keyCode === W) {
   keys.W = true;
 }

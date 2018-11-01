@@ -2,18 +2,20 @@ body {
     background-image: url("../images/BackgroundGame.png");
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'Sniglet' "sans-serif" ;
+
+
     }
 
 
 @import url(https://fonts.googleapis.com/css?family=Sniglet:800);
 
 #canvas {
-    margin-left: 330px;
-    margin-top: 140px;
+    margin-left: 300px;
+    margin-top: 170px;
     width: 600px;
     height: 400px;
     border: 1px solid black;
-    font-family: 'Sniglet';
   }
 
 
@@ -21,7 +23,7 @@ body {
   .container{
     display: flex;
     justify-content: center;
-    margin-top: 2px; 
+    margin-top: 15px; 
    
 }
 
