@@ -201,8 +201,8 @@ erase();
 context.drawImage(background, 0, 0);
 menuMusic.play();
 // Show the menu
-context.fillStyle = '#fff';
-context.font = '24px Sniglet';
+context.fillStyle = '#FEF71E';
+context.font = '48px Sniglet';
 context.textAlign = 'center';
 context.fillText('SUPER QUAIL TENNIS', canvas.width / 2, canvas.height / 4);
 context.font = '18px Sniglet';
