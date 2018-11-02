@@ -198,16 +198,18 @@ if (e.keyCode === DOWN) {
 function menu() {
 erase();
 
+
 context.drawImage(background, 0, 0);
 menuMusic.play();
-// Show the menu
-context.fillStyle = '#FEF71E';
+
+
 context.font = '48px Sniglet';
+context.fillStyle = '#FEF71E';
 context.textAlign = 'center';
 context.fillText('SUPER QUAIL TENNIS', canvas.width / 2, canvas.height / 4);
-context.font = '18px Sniglet';
+context.font = '34px Sniglet';
 context.fillText('Click to Start', canvas.width / 2, canvas.height / 3);
-context.font = '14px Sniglet';
+context.font = '24px Sniglet';
 context.textAlign = 'left';
 context.fillText('Player 1: W (up) and S (down)', 5, (canvas.height / 3) * 2);
 context.textAlign = 'right';
