@@ -1,4 +1,3 @@
-
 // Canvas Tennis
 
 var canvas = document.getElementById('canvas');
@@ -201,7 +200,6 @@ erase();
 context.drawImage(background, 0, 0);
 menuMusic.play();
 
-
 context.font = '48px Sniglet';
 context.fillStyle = '#FEF71E';
 context.textAlign = 'center';
@@ -242,6 +240,7 @@ if (rightScore === 5) {
   context.drawImage(backgroundPlayer2Win, 0, 0)
 }
 context.fillText('PLAYER ' + winner + ' WINS!', canvas.width/2, canvas.height/2);
+canvas.addEventListener('click', menu);
 applauseSound.play();
 endingsong.play();
 }
@@ -333,4 +332,3 @@ background.onload = function () {
   menu();
 };
 canvas.focus();
-
