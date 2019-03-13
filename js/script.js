@@ -48,13 +48,13 @@ DOWN: false
 
 
 var quailLeftImg = new Image();
-quailLeftImg.src = "./images/quail1.png";
+quailLeftImg.src = "./images/quail1.svg";
 
 var quailRightImg = new Image();
-quailRightImg.src = "./images/quail2.png";
+quailRightImg.src = "./images/quail2.svg";
 
 var ballImg = new Image();
-ballImg.src = "./images/ball.png";
+ballImg.src = "./images/ball.svg";
 
 function drawQuail(x, y, width, height, speed, quailImg){
 return {
@@ -77,7 +77,9 @@ return {
 }
 
 
-function drawBall(x, y, width, height, speed, ballImg){
+
+
+function drawBall(x, y, width, height, speed, ballImg, ){
 return {
   x: x,
   y: y,
@@ -93,7 +95,7 @@ return {
     else {
       context.drawImage(this.i, this.x, this.y, this.w, this.h);
     }
-  }
+  },
 };
 }
 
@@ -113,11 +115,20 @@ var rightScore = 0;
 // Create the ball
 var ballLength = 15;
 var ballSpeed = 2;
-var ball = drawBall(0, 0, ballLength, ballLength, ballSpeed, ballImg);
+var ball = drawBall(0, 0, ballLength, ballLength, ballSpeed, ballImg ,);
 
 // Modify the ball object to have two speed properties, one for X and one for Y
 ball.sX = ballSpeed;
 ball.sY = ballSpeed / 2;
+
+//rotation 
+function ballRotation(imageObject){ 
+  ctx.save(); // save current state
+  ctx.translate(imageObject.x/2, imageObject.y/2);
+  ctx.rotate(Math.PI); // rotate
+  ctx.drawImage(x,y,20,20,imageObject); // draws a chain link or dagger
+  ctx.restore(); // restore original states (no rotation etc)
+};
 
 // Randomize initial direction
 if (Math.random() > 0.5) {
@@ -270,6 +281,11 @@ if (keys.DOWN) {
 // Move the ball
 ball.x += ball.sX;
 ball.y += ball.sY;
+
+
+
+
+
 // Bounce the ball off the top/bottom
 if (ball.y < 0 || ball.y + ball.h > canvas.height) {
   ball.sY *= -1;
@@ -330,5 +346,6 @@ if (leftScore === 5 || rightScore === 5) {
 // Show the menu to start the game
 background.onload = function () {
   menu();
+ 
 };
 canvas.focus();
