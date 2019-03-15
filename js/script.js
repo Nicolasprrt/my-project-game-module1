@@ -111,6 +111,7 @@ var rightPaddle = drawQuail(canvas.width - paddleWidth - 25, canvas.height / 2 -
 // Keep track of the score
 var leftScore = 0;
 var rightScore = 0;
+var startTime= new Date();
 
 // Create the ball
 var ballLength = 15;
@@ -124,8 +125,8 @@ ball.sY = ballSpeed / 2;
 //rotation 
 function ballRotation(imageObject){ 
   ctx.save(); // save current state
-  ctx.translate(imageObject.x/2, imageObject.y/2);
-  ctx.rotate(Math.PI); // rotate
+  ctx.translate(imageObject.x +imageObject.ballLength/2, imageObject.y + imageObject.ballLength/2);
+  ctx.rotate(Math.PI / 180); // rotate
   ctx.drawImage(x,y,20,20,imageObject); // draws a chain link or dagger
   ctx.restore(); // restore original states (no rotation etc)
 };
@@ -204,9 +205,13 @@ if (e.keyCode === DOWN) {
 }
 });
 
+
+
+
 // Show the menu
 function menu() {
 erase();
+
 
 context.drawImage(background, 0, 0);
 menuMusic.play();
@@ -229,14 +234,20 @@ canvas.addEventListener('click', startGame);
 
 // Start the game
 function startGame() {
-menuMusic.pause()
 // Don't accept any more clicks
 canvas.removeEventListener('click', startGame);
+
+
+erase();
 // Put the ball in place
 resetBall();
 // Kick off the game loop
 draw();
 }
+
+function reloadPage() {document.location.reload(true)}
+
+
 
 // Show the end game screen
 function endGame() {
@@ -250,16 +261,22 @@ if (rightScore === 5) {
   winner = 2;
   context.drawImage(backgroundPlayer2Win, 0, 0)
 }
-context.fillText('PLAYER ' + winner + ' WINS!', canvas.width/2, canvas.height/2);
-canvas.addEventListener('click', menu);
+context.fillText('PLAYER ' + winner + ' WINS!', canvas.width/2, canvas.height/3);
+context.font = '32px Sniglet';
+context.textAlign = 'center';
+context.fillText('(Click to restart)', canvas.width / 2, canvas.height / 2);
 applauseSound.play();
 endingsong.play();
+canvas.addEventListener('click', reloadPage);
 }
+
+
 
 // Clear the canvas
 function erase() {
-//context.fillStyle = '#FFFFFF';
+context.fillStyle = '#FFFFFF';
 context.fillRect(0, 0, canvas.width, canvas.height);
+
 }
 
 // Main draw loop
@@ -281,6 +298,7 @@ if (keys.DOWN) {
 // Move the ball
 ball.x += ball.sX;
 ball.y += ball.sY;
+
 
 
 
@@ -327,9 +345,30 @@ context.drawImage(background, 0, 0);
 leftPaddle.draw();
 rightPaddle.draw();
 ball.draw();
+
 // Draw the scores
 context.fillStyle = '#ffffff';
 context.font = '24px Sniglet';
+
+
+// draw the time 
+function drawElapsedTime(){
+  var elapsed=parseInt((new Date() - startTime)/1000);
+  context.save();
+  context.beginPath();
+  context.textAlign = 'center';
+  context.fillStyle="red";
+  context.font="14px Verdana"
+  // draw the running time at half opacity
+  context.globalAlpha=0.50;
+  context.fillText(elapsed+" secs",canvas.width-75,25);
+  context.restore();
+}
+
+///////////////////////////////////////    FOR TIMER 
+context.textAlign = 'center';
+context.fillText(leftScore, 5, 24);
+/////////////////////////////////////
 
 context.textAlign = 'left';
 context.fillText('Score: ' + leftScore, 5, 24);
