@@ -300,10 +300,6 @@ ball.x += ball.sX;
 ball.y += ball.sY;
 
 
-
-
-
-
 // Bounce the ball off the top/bottom
 if (ball.y < 0 || ball.y + ball.h > canvas.height) {
   ball.sY *= -1;
@@ -346,34 +342,35 @@ leftPaddle.draw();
 rightPaddle.draw();
 ball.draw();
 
-// Draw the scores
-context.fillStyle = '#ffffff';
-context.font = '24px Sniglet';
-
-
-// draw the time 
+// draw the time playing
 function drawElapsedTime(){
-  var elapsed=parseInt((new Date() - startTime)/1000);
+var elapsed=parseInt((new Date() - startTime)/1000);
+
   context.save();
   context.beginPath();
   context.textAlign = 'center';
-  context.fillStyle="red";
-  context.font="14px Verdana"
-  // draw the running time at half opacity
-  context.globalAlpha=0.50;
-  context.fillText(elapsed+" secs",canvas.width-75,25);
+  context.fillStyle= '#ffffff';
+  context.font = '24px Sniglet';
+  // draw the running time
+  context.fillText("⏱ " + elapsed ,canvas.width/2,25);
   context.restore();
 }
 
-///////////////////////////////////////    FOR TIMER 
-context.textAlign = 'center';
-context.fillText(leftScore, 5, 24);
-/////////////////////////////////////
+drawElapsedTime();
 
+
+
+// Draw the scores
+context.fillStyle = '#ffffff';
+context.font = '24px Sniglet';
 context.textAlign = 'left';
 context.fillText('Score: ' + leftScore, 5, 24);
 context.textAlign = 'right';
 context.fillText('Score: ' + rightScore, canvas.width - 5, 24);
+
+
+
+
 // End the game or keep going
 if (leftScore === 5 || rightScore === 5) {
   endGame();
