@@ -85,6 +85,7 @@ return {
   y: y,
   w: width,
   h: height,
+  angle : 0,
   s: speed,
   i: ballImg,
   draw: function() {
@@ -93,11 +94,13 @@ return {
       context.fillRect(this.x, this.y, this.w, this.h);
     }
     else {
-      context.drawImage(this.i, this.x, this.y, this.w, this.h);
+      context.drawImage(this.i, this.x, this.y, this.w, this.h,);
     }
   },
 };
 }
+
+
 
 
 
@@ -111,7 +114,6 @@ var rightPaddle = drawQuail(canvas.width - paddleWidth - 25, canvas.height / 2 -
 // Keep track of the score
 var leftScore = 0;
 var rightScore = 0;
-var startTime= new Date();
 
 // Create the ball
 var ballLength = 15;
@@ -122,14 +124,7 @@ var ball = drawBall(0, 0, ballLength, ballLength, ballSpeed, ballImg ,);
 ball.sX = ballSpeed;
 ball.sY = ballSpeed / 2;
 
-//rotation 
-function ballRotation(imageObject){ 
-  ctx.save(); // save current state
-  ctx.translate(imageObject.x +imageObject.ballLength/2, imageObject.y + imageObject.ballLength/2);
-  ctx.rotate(Math.PI / 180); // rotate
-  ctx.drawImage(x,y,20,20,imageObject); // draws a chain link or dagger
-  ctx.restore(); // restore original states (no rotation etc)
-};
+
 
 // Randomize initial direction
 if (Math.random() > 0.5) {
@@ -342,21 +337,6 @@ leftPaddle.draw();
 rightPaddle.draw();
 ball.draw();
 
-// draw the time playing
-function drawElapsedTime(){
-var elapsed=parseInt((new Date() - startTime)/1000);
-
-  context.save();
-  context.beginPath();
-  context.textAlign = 'center';
-  context.fillStyle= '#ffffff';
-  context.font = '24px Sniglet';
-  // draw the running time
-  context.fillText("⏱ " + elapsed ,canvas.width/2,25);
-  context.restore();
-}
-
-drawElapsedTime();
 
 
 
