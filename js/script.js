@@ -1,4 +1,4 @@
-// Canvas Tennis
+// Canvas for Super Tennis Quail
 
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
